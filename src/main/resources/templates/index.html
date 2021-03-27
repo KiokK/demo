@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> <!-- подключаем шаблонизатор -->
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<main>
+<!--    <p th:text="'Hello, ' + ${name} + '!'" />-->
+
+
+    <form method="post">
+        <input type="text" name="text" placeholder="Text" required>
+        <input type="text" name="tag" placeholder="Tag" required>
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+    <br>
+    <form action="filter" method="post">
+        <input type="text" name="filter" placeholder="Filter by tag" >
+        <button type="submit" class="btn btn-success">Chose</button>
+    </form>
+    <br>
+
+    <div th:each="mes : ${messages}">
+        <b>ID:</b> <b th:text="${mes.id}"></b>
+        <span>TEXT:</span> <span th:text="${mes.text}"></span>
+        <i>TAG:</i> <i th:text="${mes.tag}"></i>
+    </div>
+
+</main>
+
+<!--<footer th:insert="blocks/footer :: footer"></footer>-->
+
+</body>
+</html>
