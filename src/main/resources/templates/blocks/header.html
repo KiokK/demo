@@ -3,7 +3,11 @@
         <p class="h5 my-0 me-md-auto fw-normal">KIOK</p>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-dark" href="/">Главная страница</a>
-            <a class="p-2 text-dark" href="/sign_in">Войти</a>
+            <a class="p-2 text-dark" href="/main">Войти</a>
+            <a class="p-2 text-dark" th:href="@{/logout}" >Выйти</a>
+<!--            <form th:action="@{/logout}" method="post">-->
+<!--                <input type="submit" value="Sign Out"/>-->
+<!--            </form>-->
         </nav>
         <!--        <a class="btn btn-outline-primary" href="#">Sign up</a>-->
     </div>

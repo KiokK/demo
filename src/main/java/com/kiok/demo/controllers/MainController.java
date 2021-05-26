@@ -19,18 +19,30 @@ public class MainController {
     private MessageRepos messageRepos;
 
     //localhost:8081/?name=bra
+//    @GetMapping("/")
+//    private String MainPage(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
+//                            Model model){
+//        Iterable<Message> all = messageRepos.findAll();
+//        model.addAttribute("messages", all);
+//        return "index";
+//    }
+
     @GetMapping("/")
-    private String MainPage(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-                            Model model){
+    private String indexPage(Model model){
+        return "greeting";
+    }
+
+    @GetMapping("/main")
+    private String mainPage(Model model){
         Iterable<Message> all = messageRepos.findAll();
         model.addAttribute("messages", all);
         return "index";
     }
-
-    @PostMapping("/")
+    @PostMapping("/main")
     private String addMessage(@RequestParam String text, @RequestParam String tag, Map<String, Object> model){
         Message message = new Message(text, tag);
         System.out.println(message);
+//        System.out.println("loujjhdgrsfeadsFAE");
         messageRepos.save(message);
 
         Iterable<Message> all = messageRepos.findAll();
