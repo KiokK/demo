@@ -2,12 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.9.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+
 	<groupId>com.kiok</groupId>
 	<artifactId>firs-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -16,6 +11,15 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+<!--		<artifactId>spring-boot-maven-plugin</artifactId>-->
+		<version>2.3.9.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
 	<dependencies>
 		<!-- - - - - - - MySQL - - - - - - - -->
 		<dependency>
@@ -46,6 +50,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -92,16 +97,134 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>10</source>
-					<target>10</target>
-				</configuration>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					<source>10</source>-->
+<!--					<target>10</target>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
 </project>
+<!--		<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+<!--<modelVersion>4.0.0</modelVersion>-->
+
+<!--<groupId>com.kiok</groupId>-->
+<!--<artifactId>firs-project</artifactId>-->
+<!--<version>0.0.1-SNAPSHOT</version>-->
+<!--<name>firs-project</name>-->
+<!--<description>Demo project for Spring Boot</description>-->
+<!--<properties>-->
+<!--	<java.version>1.8</java.version>-->
+<!--</properties>-->
+
+<!--&lt;!&ndash;	<parent>&ndash;&gt;-->
+<!--&lt;!&ndash;		<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;		<artifactId>spring-boot-starter-parent</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;		<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;		<version>2.3.9.RELEASE</version>&ndash;&gt;-->
+<!--&lt;!&ndash;		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;	</parent>&ndash;&gt;-->
+<!--<parent>-->
+<!--	<groupId>org.springframework.boot</groupId>-->
+<!--	<artifactId>spring-boot-starter-parent</artifactId>-->
+<!--	<version>2.0.0.RELEASE</version>-->
+<!--</parent>-->
+
+<!--<dependencies>-->
+<!--	&lt;!&ndash; - - - - - - MySQL - - - - - - - &ndash;&gt;-->
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--	</dependency>-->
+<!--	<dependency>-->
+<!--		<groupId>mysql</groupId>-->
+<!--		<artifactId>mysql-connector-java</artifactId>-->
+<!--		<scope>runtime</scope>-->
+<!--	</dependency>-->
+
+<!--	&lt;!&ndash; - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--	&lt;!&ndash; security- - - - - - - - - - - - - - - - &ndash;&gt;-->
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-security</artifactId>-->
+<!--	</dependency>-->
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.security</groupId>-->
+<!--		<artifactId>spring-security-test</artifactId>-->
+<!--		<scope>test</scope>-->
+<!--	</dependency>-->
+<!--	&lt;!&ndash; - - - - - - - - - - - - - - - - &ndash;&gt;-->
+
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+<!--	</dependency>-->
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-web</artifactId>-->
+<!--	</dependency>-->
+
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-devtools</artifactId>-->
+<!--		<scope>runtime</scope>-->
+<!--		<optional>true</optional>-->
+<!--	</dependency>-->
+
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-test</artifactId>-->
+<!--		<scope>test</scope>-->
+<!--	</dependency>-->
+
+
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+<!--	</dependency>-->
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-web</artifactId>-->
+<!--	</dependency>-->
+
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-devtools</artifactId>-->
+<!--		<scope>runtime</scope>-->
+<!--		<optional>true</optional>-->
+<!--	</dependency>-->
+<!--	<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-test</artifactId>-->
+<!--		<scope>test</scope>-->
+<!--	</dependency>-->
+<!--</dependencies>-->
+
+<!--<build>-->
+<!--	<plugins>-->
+<!--		<plugin>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--			<version>${project.parent.version}</version>-->
+<!--			&lt;!&ndash;			</plugin>&ndash;&gt;-->
+<!--			&lt;!&ndash;			<plugin>&ndash;&gt;-->
+<!--			&lt;!&ndash;				<groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--			&lt;!&ndash;				<artifactId>maven-compiler-plugin</artifactId>&ndash;&gt;-->
+<!--			&lt;!&ndash;				<configuration>&ndash;&gt;-->
+<!--			&lt;!&ndash;					<source>10</source>&ndash;&gt;-->
+<!--			&lt;!&ndash;					<target>10</target>&ndash;&gt;-->
+<!--			&lt;!&ndash;				</configuration>&ndash;&gt;-->
+<!--		</plugin>-->
+<!--	</plugins>-->
+<!--</build>-->
+
+<!--</project>-->

@@ -7,18 +7,18 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div th:if="${param.error}">
-  Invalid username and password.
+
+<div >
+  <b>Registration</b>
 </div>
-<div th:if="${param.logout}">
-  You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
+<form th:action method="post">
   <div><label> User Name : <input type="text" name="username"/> </label></div>
   <div><label> Password: <input type="password" name="password"/> </label></div>
-  <div><input type="submit" value="Sign In"/></div>
+  <button type="submit" class="btn btn-success">Registration</button>
 </form>
-<a href="/registration">Registration</a>
+<!--<div th:if="${massage}">-->
+<!--  ${massage)-->
+<!--</div>-->
 </body>
 </html>
 

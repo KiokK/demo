@@ -1,4 +1,5 @@
 package com.kiok.demo.models;
 
-public class Role {
+public enum Role {
+    USER;
 }
