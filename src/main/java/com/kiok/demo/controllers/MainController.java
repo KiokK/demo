@@ -1,8 +1,10 @@
 package com.kiok.demo.controllers;
 
 import com.kiok.demo.models.Message;
+import com.kiok.demo.models.User;
 import com.kiok.demo.repo.MessageRepos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,10 +41,12 @@ public class MainController {
         return "index";
     }
     @PostMapping("/main")
-    private String addMessage(@RequestParam String text, @RequestParam String tag, Map<String, Object> model){
-        Message message = new Message(text, tag);
-        System.out.println(message);
-//        System.out.println("loujjhdgrsfeadsFAE");
+    private String addMessage(
+            @AuthenticationPrincipal User user,
+            @RequestParam String text,
+            @RequestParam String tag, Map<String, Object> model){
+        Message message = new Message(text, tag, user);
+//        System.out.println(message);
         messageRepos.save(message);
 
         Iterable<Message> all = messageRepos.findAll();
