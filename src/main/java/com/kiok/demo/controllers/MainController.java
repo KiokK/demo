@@ -4,20 +4,28 @@ import com.kiok.demo.models.Message;
 import com.kiok.demo.models.User;
 import com.kiok.demo.repo.MessageRepos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class MainController {
 
     @Autowired
     private MessageRepos messageRepos;
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     @GetMapping("/")
     private String indexPage(Model model){
@@ -42,11 +50,28 @@ public class MainController {
 
     @PostMapping("/main")
     private String addMessage(
+            @RequestParam("file") MultipartFile file,
             @AuthenticationPrincipal User user,
             @RequestParam String text,
-            @RequestParam String tag, Map<String, Object> model){
+            @RequestParam String tag, Map<String, Object> model
+    ) throws IOException {
         Message message = new Message(text, tag, user);
-//        System.out.println(message);
+
+        if (file != null){
+            File uploadDir = new File(uploadPath);
+
+            if (!uploadDir.exists() && !file.getOriginalFilename().isEmpty()){
+                uploadDir.mkdir();
+            }
+
+            String uuidFile = UUID.randomUUID().toString();// создаем уникальное имя
+            String resultFileName = uuidFile + "." + file.getOriginalFilename();//совмешаем с именем пользователя
+
+            file.transferTo(new File(uploadPath + "/" + resultFileName));//загрузка
+
+            message.setFilename(resultFileName);
+        }
+
         messageRepos.save(message);
 
         Iterable<Message> all = messageRepos.findAll();

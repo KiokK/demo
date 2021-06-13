@@ -7,9 +7,10 @@
     <@l.logout/>
 
 
-    <form action="/main" method="post">
+    <form action="/main" method="post" enctype="multipart/form-data">
         <input type="text" name="text" placeholder="Text" required>
         <input type="text" name="tag" placeholder="Tag" required>
+        <input type="file" name="file">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button type="submit" class="btn btn-success">Add</button>
     </form>
@@ -24,6 +25,11 @@
             <span>TEXT:</span> <span>${messages.text}</span>
             <i>TAG:</i> <i>${messages.tag}</i>
             <b> ${messages.authorName}</b>
+            <div>
+                <#if messages.filename??>
+                <img src="/img/${messages.filename}" alt="" width="30%">
+                </#if>
+            </div>
         </div>
         <#else>
             No messages
