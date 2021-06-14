@@ -2,7 +2,6 @@
 <#import "blocks/login.ftlh" as l>
 <@c.page>
 
-<main>
 
     <@l.logout/>
 
@@ -30,5 +29,4 @@
     </table>
 
 
-</main>
 </@c.page>

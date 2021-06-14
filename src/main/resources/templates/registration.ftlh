@@ -6,6 +6,6 @@
   <div >
     <b>Registration</b>
   </div>
-  <@l.login "/registration" />
+  <@l.login "/registration" true/>
 
 </@c.page>

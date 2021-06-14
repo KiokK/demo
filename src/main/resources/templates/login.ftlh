@@ -3,9 +3,8 @@
 
 <@c.page>
 
-login page
-<@l.login "/login" />
-  <a href="/registration">Registration</a>
+<b>Login page</b>
+<@l.login "/login" false/>
 
 </@c.page>
 
