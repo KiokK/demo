@@ -21,8 +21,10 @@
                 </li>
                 </#if>
             </ul>
-            <div class="navbar-text float-left mr-3">${name}</div>
-            <@l.logout />
+            <#if name != "unknown">
+                <div class="navbar-text float-left mr-3">${name}</div>
+                <@l.logout />
+            </#if>
         </div>
     </div>
 </nav>
