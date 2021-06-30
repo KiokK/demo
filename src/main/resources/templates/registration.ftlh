@@ -3,9 +3,10 @@
 <@c.page>
 
 
-  <div >
+  <div class="mb-1">
     <b>Registration</b>
   </div>
+${message?ifExists}
   <@l.login "/registration" true/>
 
 </@c.page>

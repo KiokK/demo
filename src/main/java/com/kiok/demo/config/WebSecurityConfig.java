@@ -1,6 +1,6 @@
 package com.kiok.demo.config;
 
-import com.kiok.demo.service.UserService;
+import com.kiok.demo.service.UserSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,32 +18,52 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
+    private UserSevice userSevice;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                    .authorizeRequests()
-                    .antMatchers("/", "/registration").permitAll()//без входа и регистрации
-                    .anyRequest().authenticated()
+                .authorizeRequests()
+                .antMatchers("/", "/registration", "/activate/*").permitAll()
+                .anyRequest().authenticated()
                 .and()
-                    .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
-                    .defaultSuccessUrl("/main", true)
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
                 .and()
-//                    .logout()
-//                    .permitAll();
-                      .logout()
-                      .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                      .logoutSuccessUrl("/");
+                .logout()
+                .permitAll();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService)
+        auth.userDetailsService(userSevice)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
-
     }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                    .authorizeRequests()
+//                    .antMatchers("/", "/registration", "/activate/*").permitAll()//без входа и регистрации
+//                    .anyRequest().authenticated()
+//                .and()
+//                    .formLogin()
+//                    .loginPage("/login")
+//                    .permitAll()
+//                    .defaultSuccessUrl("/main", true)
+//                .and()
+////                    .logout()
+////                    .permitAll();
+//                      .logout()
+//                      .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                      .logoutSuccessUrl("/");
+//    }
+//
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userSevice)
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance());
+//
+//    }
 
 }

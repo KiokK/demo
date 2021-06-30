@@ -4,6 +4,8 @@
 <@c.page>
 
 <b>Login page</b>
+
+${message?ifExists}
 <@l.login "/login" false/>
 
 </@c.page>
