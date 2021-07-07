@@ -42,7 +42,7 @@ public class UserSevice implements UserDetailsService {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
-                            "Welcome to Sweater. Please, visit next link: http://localhost:8081/activate/%s",
+                            "Welcome to KIOK. Please, visit next link: http://localhost:8081/activate/%s",
                     user.getUsername(),
                     user.getActivationCode()
             );

@@ -24,15 +24,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/registration", "/activate/*").permitAll()
-                .anyRequest().authenticated()
+                    .antMatchers("/", "/registration", "/activate/*").permitAll()//без входа и регистрации
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
+                    .formLogin()
+                    .loginPage("/login")
+                    .permitAll()
+                    .defaultSuccessUrl("/main", true)
                 .and()
-                .logout()
-                .permitAll();
+//                    .logout()
+//                    .permitAll();
+                      .logout()
+                      .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                      .logoutSuccessUrl("/");
     }
 
     @Override
@@ -40,30 +44,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userSevice)
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                    .authorizeRequests()
-//                    .antMatchers("/", "/registration", "/activate/*").permitAll()//без входа и регистрации
-//                    .anyRequest().authenticated()
-//                .and()
-//                    .formLogin()
-//                    .loginPage("/login")
-//                    .permitAll()
-//                    .defaultSuccessUrl("/main", true)
-//                .and()
-////                    .logout()
-////                    .permitAll();
-//                      .logout()
-//                      .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                      .logoutSuccessUrl("/");
-//    }
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userSevice)
-//                .passwordEncoder(NoOpPasswordEncoder.getInstance());
-//
-//    }
 
 }
