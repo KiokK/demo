@@ -6,7 +6,7 @@ create table message (
     id bigint not null,
     filename varchar(255),
     tag varchar(255),
-    text varchar(255),
+    text varchar(255) not null,
     user_id bigint,
     primary key (id)) engine=InnoDB;
 
@@ -17,8 +17,8 @@ create table usr (
     activation_code varchar(255),
     active bit not null,
     email varchar(255),
-    password varchar(255),
-    username varchar(255),
+    password varchar(255) not null,
+    username varchar(255) not null,
     primary key (id)
 ) engine=InnoDB;
 
